@@ -33,8 +33,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (slidesContainer && premiumSlides.length > 0 && next && prev) {
 
         let premiumIndex = 1;
-        const slideWidth = premiumSlides[0].clientWidth;
+        let slideWidth;
 
+function updateSlideWidth() {
+    slideWidth = document.querySelector('.slide').clientWidth;
+}
+
+updateSlideWidth();
+window.addEventListener("resize", updateSlideWidth);
         const firstClone = premiumSlides[0].cloneNode(true);
         const lastClone = premiumSlides[premiumSlides.length - 1].cloneNode(true);
 
@@ -81,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setInterval(() => {
             premiumIndex++;
             moveToSlide();
-        }, 5000);
+        }, 2000);
     }
 
 
