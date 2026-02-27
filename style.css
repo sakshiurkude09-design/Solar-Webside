@@ -1695,11 +1695,7 @@ form button:hover {
     font-size: 28px;
     cursor: pointer;
 }
-    .mobile-menu{
-        margin-top: 0;
-        border-bottom-right-radius: 65%;
-        border-top-left-radius: 65%;
-    }
+   
       .hero-content h2 {
     font-size: 1.2rem;
   }
@@ -2146,3 +2142,4 @@ textarea:focus {
 .delete-btn:hover{
     background: rgb(122, 0, 0);
 }
+
