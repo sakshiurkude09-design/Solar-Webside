@@ -886,8 +886,9 @@ form button:hover {
 *****************************/
   /* ===== Contact Section ===== */
 .contact {
-    padding: 50px 10%;
-    text-align: center;
+  padding: 80px 5%;
+    max-width: 1300px;   /* width increase */
+    margin: auto;
 }
 
 .contact h2 {
@@ -2154,5 +2155,6 @@ textarea:focus {
 .delete-btn:hover{
     background: rgb(122, 0, 0);
 }
+
 
 
