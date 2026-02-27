@@ -46,8 +46,8 @@ ul{
     left: 0;
     width: 100%;
  color: white;
- background-color: #051eaf;
-    padding: 20px 10px 20px 40px;
+ background-color: #304add;
+    padding: 10px 10px 10px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -58,7 +58,7 @@ h1{
    color: rgb(0, 0, 0);
 }
 h2{
-    font-size: 30px;
+    font-size:25px;
 }
 h3{
     color: #000;
@@ -73,7 +73,7 @@ h4{
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 100px;
+    gap: 50px;
     justify-content: space-between;
     align-items: center;
 }
@@ -81,7 +81,7 @@ h4{
 .nav-links a {
     text-decoration: none;
     color: rgb(0, 0, 0);
-    font-weight: 600;
+    font-weight: 200;
 }
 .active{
     color: rgb(0, 0, 0);
@@ -90,8 +90,8 @@ h4{
 }
 .nav-links li a {
     color: white;
-    font-weight: 600;
-    font-size: 20px;
+    font-weight: 900;
+    font-size: 16px;
     position: relative;
     transition: color 0.3s ease;
 }
@@ -313,7 +313,7 @@ font-size: 15px;
 
 .ctn{
     padding: 10px 20px;
-    background-color: rgb(7, 224, 224);
+    background-color: rgb(6, 202, 202);
     border-radius: 30px;
     color: #000000;
     display: inline-block;
@@ -321,7 +321,7 @@ font-size: 15px;
 }
 
  .ctn:hover{
-    background-color: #051eaf;
+    background-color: #065386;
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
@@ -2059,7 +2059,7 @@ textarea:focus {
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
     padding: 40px;
   
@@ -2146,5 +2146,3 @@ textarea:focus {
 .delete-btn:hover{
     background: rgb(122, 0, 0);
 }
-
-
