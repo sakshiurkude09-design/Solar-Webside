@@ -87,7 +87,7 @@ window.addEventListener("resize", updateSlideWidth);
         setInterval(() => {
             premiumIndex++;
             moveToSlide();
-        }, 2000);
+        }, 3000);
     }
 
 
@@ -274,3 +274,4 @@ function deleteProject(index) {
         location.reload();
     }
 }
+
