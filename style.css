@@ -2133,4 +2133,18 @@ textarea:focus {
 .modal .close:hover {
     color: #00aff5;
 }
+.delete-btn{
+    background: rgb(204, 3, 3);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-btn:hover{
+    background: rgb(122, 0, 0);
+}
+
 
