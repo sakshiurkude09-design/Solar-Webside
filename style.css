@@ -886,7 +886,7 @@ form button:hover {
 *****************************/
   /* ===== Contact Section ===== */
 .contact {
-  padding: 80px 5%;
+    padding: 80px 5%;
     max-width: 1300px;   /* width increase */
     margin: auto;
 }
@@ -1660,8 +1660,10 @@ form button:hover {
 
 }
 
-
   @media (max-width:600px){
+    .navbar{
+        padding: 28px 10px 20px 40px;
+    }
 
     .battery-info {
       flex-direction: column;
@@ -1932,7 +1934,7 @@ h4{
     }
 
     .hero1-image {
-        max-width: 90%;
+           max-width: 330px;
         height: auto;
         margin: 30px auto 0 auto;
     }
@@ -1957,6 +1959,19 @@ h4{
     color: #22c55e;
     margin-bottom: 20px;
 
+}
+.hero-text1 p{
+    font-size: 0.9em;
+    margin-bottom: 1px;
+    line-height: 1.6;
+}
+.hero-image {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 330px;
+    margin: auto;
+    overflow: hidden;
 }
 
 }
@@ -2155,6 +2170,3 @@ textarea:focus {
 .delete-btn:hover{
     background: rgb(122, 0, 0);
 }
-
-
-
