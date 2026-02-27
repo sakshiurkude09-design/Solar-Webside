@@ -1646,6 +1646,18 @@ form button:hover {
 /*=============================
      RESPONSIVE WEBSIDE
 ===============================*/
+@media (max-width:1900px){
+    .services1 {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+
+}
 
 
   @media (max-width:600px){
@@ -2142,4 +2154,5 @@ textarea:focus {
 .delete-btn:hover{
     background: rgb(122, 0, 0);
 }
+
 
