@@ -2331,7 +2331,8 @@ textarea:focus {
 }
 #modalImages {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   grid-template-columns: repeat(2, 330px); /* 3 columns, fixed width */
+    flex-wrap: wrap;
   gap: 30px;
     max-width: 1200px;
     margin: 50px auto;
