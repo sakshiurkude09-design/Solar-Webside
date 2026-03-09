@@ -15,20 +15,28 @@
 
 
 <form id="serviceForm">
-
+ 
     <div class="form-header">
         <h2>Add New projects</h2> 
         <p>Solar Admin Panel</p>
     </div>
 
     <input type="text" id="title" placeholder="Project Title" required>
-    <input type="text" id="image" placeholder="Image Path " required>
+   <input type="file" id="image" accept="image/*" required>
     <textarea id="description" placeholder="Project Description" required></textarea>
 
-<input type="text" id="image1" placeholder="Image 1 path" required>
-<input type="text" id="image2" placeholder="Image 2 path" required>
-<input type="text" id="image3" placeholder="Image 3 path" required>
+
+<input type="file" id="image1" accept="image/*" required>
+<input type="file" id="image2" accept="image/*" required>
+<input type="file" id="image3" accept="image/*" required>
 <input type="text" id="link" placeholder="Page Link (gallary.html)" required>
+
+<select id="category" required>
+    <option value="">Select Category</option>
+    <option value="residential">Residential</option>
+    <option value="commercial">Commercial</option>
+    <option value="industrial">Industrial</option>
+</select>
 
     <button type="submit">Add Service</button>
     
