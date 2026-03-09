@@ -155,37 +155,57 @@ window.addEventListener("resize", updateSlideWidth);
 
 
     /* =========================
-       SERVICE FORM (ADD PROJECT)
-    ========================== */
-    const serviceForm = document.getElementById("serviceForm");
+   SERVICE FORM (ADD PROJECT)
+========================== */
 
-    if (serviceForm) {
-        serviceForm.addEventListener("submit", function (e) {
-            e.preventDefault();
+const serviceForm = document.getElementById("serviceForm");
 
-            const project = {
-                title: document.getElementById("title").value,
-                description: document.getElementById("description").value,
-                images: [
-                    document.getElementById("image").value,
-                    document.getElementById("image1").value,
-                    document.getElementById("image2").value,
-                    document.getElementById("image3").value
-                ],
-                link: document.getElementById("link").value
-            };
+if (serviceForm) {
 
-            let projects =
-                JSON.parse(localStorage.getItem("projects")) || [];
+serviceForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-            projects.push(project);
-            localStorage.setItem("projects", JSON.stringify(projects));
-
-            alert("Project Added Successfully ✅");
-            serviceForm.reset();
+    const getBase64 = file => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
         });
+    };
+
+    const imageFiles = [
+        document.getElementById("image").files[0],
+        document.getElementById("image1").files[0],
+        document.getElementById("image2").files[0],
+        document.getElementById("image3").files[0]
+    ];
+
+    const base64Images = [];
+
+    for (let file of imageFiles) {
+        if (file) {
+            const base64 = await getBase64(file);
+            base64Images.push(base64);
+        }
     }
 
+    const project = {
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        category: document.getElementById("category").value,
+        images: base64Images
+    };
+
+    let projects = JSON.parse(localStorage.getItem("projects")) || [];
+    projects.push(project);
+    localStorage.setItem("projects", JSON.stringify(projects));
+
+    alert("Project Added Successfully ✅");
+    serviceForm.reset();
+});
+
+}
 
     /* =========================
        DISPLAY PROJECTS
@@ -275,3 +295,120 @@ function deleteProject(index) {
     }
 }
 
+
+const residentialGallery = document.getElementById("residentialGallery");
+const commercialGallery = document.getElementById("commercialGallery");
+const industrialGallery = document.getElementById("industrialGallery");
+
+if (residentialGallery || commercialGallery || industrialGallery) {
+
+    const projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+   projects.forEach((project, index) => {
+
+    if (!project.images || project.images.length === 0) return;
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+        <img src="${project.images[0]}" alt="${project.title}">
+        <div class="card-body">
+            <h3>${project.title}</h3>
+            <p>${project.description.substring(0, 80)}...</p>
+            <button class="view-btn">View Details</button>
+            <button class="delete-btn">Delete</button>
+        </div>
+    `;
+
+    card.querySelector(".view-btn")
+        .addEventListener("click", () => openProjectModal(project));
+
+    card.querySelector(".delete-btn")
+        .addEventListener("click", () => deleteProject(index));
+
+    if (project.category === "residential") {
+        residentialGallery.appendChild(card);
+    }
+
+    if (project.category === "commercial") {
+        commercialGallery.appendChild(card);
+    }
+
+    if (project.category === "industrial") {
+        industrialGallery.appendChild(card);
+    }
+
+});
+}
+function openCategory(categoryName) {
+
+    const projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+    const filteredProjects = projects.filter(
+        project => project.category === categoryName
+    );
+
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDesc = document.getElementById("modalDesc");
+    const imagesDiv = document.getElementById("modalImages");
+
+    modalTitle.innerText = categoryName.toUpperCase() + " Projects";
+    modalDesc.innerText = "";
+    imagesDiv.innerHTML = "";
+
+    if (filteredProjects.length === 0) {
+        imagesDiv.innerHTML = "<p>No Projects Available</p>";
+    }
+
+  filteredProjects.forEach((project, index) => {
+
+    const card = document.createElement("div");
+    card.className = "modal-card";
+
+    card.innerHTML = `
+        <img src="${project.images[0]}" class="modal-thumb">
+        <h4>${project.title}</h4>
+        <button class="view-project-btn">View Project</button>
+    `;
+
+    card.querySelector(".view-project-btn")
+        .addEventListener("click", () => {
+            openProjectDetail(project, index);
+        });
+
+    imagesDiv.appendChild(card);
+});
+
+    document.getElementById("projectModal").style.display = "block";
+}
+function openProjectDetail(project, index) {
+
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDesc = document.getElementById("modalDesc");
+    const imagesDiv = document.getElementById("modalImages");
+
+    modalTitle.innerText = project.title;
+    modalDesc.innerText = project.description;
+    imagesDiv.innerHTML = "";
+
+    project.images.forEach(img => {
+        if (img) {
+            const image = document.createElement("img");
+            image.src = img;
+            image.className = "modal-img";
+            imagesDiv.appendChild(image);
+        }
+    });
+
+    // Delete Button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Delete Project";
+    deleteBtn.className = "delete-btn";
+
+    deleteBtn.addEventListener("click", () => {
+        deleteProject(index);
+    });
+
+    imagesDiv.appendChild(deleteBtn);
+}
